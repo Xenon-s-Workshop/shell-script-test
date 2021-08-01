@@ -10,7 +10,7 @@ env
 
 cd ~/kernel # Depends on where source got synced
 
-REPO_URL=https://github.com/XenonTheInertG/Kernel-Bakery
+REPO_URL=https://github.com/XenonTheInertG/kernel-workflow
 OUT=~/kernel/output/arch/arm64/boot
 PWD=$(pwd)
 ARCH=arm64
