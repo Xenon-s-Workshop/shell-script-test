@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TG_USERNAME=@XenonTheInertG
+
 # Lets see machine specifications and environments
 df -h
 free -h
@@ -77,9 +77,9 @@ make_kernel(){
 	MINUTES=$(($DIFF / 60))
 	SECONDS=$(($DIFF % 60))
 	if [ -f $OUT/Image.gz-dtb ]; then
-		tg_post_msg "<b>$TG_USERNAME Build Completed in $MINUTES:$SECONDS minutes</b>" "$CHAT_ID"
+		tg_post_msg "<b>Build Completed in $MINUTES:$SECONDS minutes</b>" "$CHAT_ID"
 	else
-		tg_post_msg "<b>$TG_USERNAME Build Failed in $MINUTES:$SECONDS minutes check <a href='${REPO_URL}/actions'>Actions</a></b>" "$CHAT_ID"
+		tg_post_msg "<b>Build Failed in $MINUTES:$SECONDS minutes check <a href='${REPO_URL}/actions'>Actions</a></b>" "$CHAT_ID"
 	fi
    }
 }
