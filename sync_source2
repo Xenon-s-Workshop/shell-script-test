@@ -1,10 +1,10 @@
 #!/bin/bash
 
 MANIFEST=git://github.com/SHRP/platform_manifest_twrp_omni.git
-BRANCH=v3_9.0
-DEVICE=laurel_sprout
+BRANCH=android
+DEVICE=lancelot
 BRAND=xiaomi
-DT_LINK=https://github.com/HemantSachdeva/shrp_device_xiaomi_laurel_sprout
+DT_LINK=https://github.com/SHRP-Devices/device_xiaomi_lancelot
 
 mkdir -p ~/shrp
 cd ~/shrp
