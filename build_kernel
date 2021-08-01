@@ -10,7 +10,7 @@ env
 
 cd ~/kernel # Depends on where source got synced
 
-REPO_URL=https://github.com/HemantSachdeva/kernel-GitActions
+REPO_URL=https://github.com/XenonTheInertG/Kernel-Bakery
 OUT=~/kernel/output/arch/arm64/boot
 PWD=$(pwd)
 ARCH=arm64
