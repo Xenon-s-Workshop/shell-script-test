@@ -10,7 +10,7 @@ env
 
 cd ~/kernel # Depends on where source got synced
 
-REPO_URL=https://github.com/XenonTheInertG/kernel-workflow
+REPO_URL=https://github.com/XenonTheInertG/Kernel-CI
 OUT=~/kernel/output/arch/arm64/boot
 PWD=$(pwd)
 ARCH=arm64
@@ -65,7 +65,7 @@ tg_post_msg() {
 }
 
 make_kernel(){
-	tg_post_msg "<b>KERNEL Build Started!</b>
+	tg_post_msg "<b>🛠️CI|Kernel Build Started!</b>
 	<b>Started on:</b> Github Actions
 	<b>Date:</b> $(date)" "$CHAT_ID"
 	[ -e output/.config ] && {
