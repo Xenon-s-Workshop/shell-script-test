@@ -25,12 +25,12 @@ jobs:
       - name: Install packages
         run: |
             cd ~/scripts
-            ./install_packages
+            ./install_packages2
       
       - name: Sync Source
         run: |
             cd ~/scripts
-            ./sync_source
+            ./sync_source2
       
       - name: Build Recovery
         run: |
