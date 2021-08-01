@@ -1,0 +1,42 @@
+name: Build Kernel
+
+on: 
+  watch:
+    types: [started]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  CHAT_ID: ${{ secrets.CHAT_ID }} # Go to repository settings>secrets and give your values
+  BOT_API: ${{ secrets.BOT_API }} # for CHAT_ID and BOT_API
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:    
+      - name: Download repo
+        run: |
+            pwd
+            git clone https://github.com/HemantSachdeva/kernel-GitActions.git ~/scripts
+            chmod -R +x ~/scripts
+      - name: Install packages
+        run: |
+            cd ~/scripts
+            ./install_packages
+      
+      - name: Sync Source
+        run: |
+            cd ~/scripts
+            ./sync_source
+      
+      - name: Build Kernel
+        run: |
+            cd ~/scripts
+            ./build_kernel
+
+      - name: Send Kernel
+        run: |
+            cd ~/scripts
+            ./send_kernel
