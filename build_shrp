@@ -1,0 +1,72 @@
+#!/bin/bash
+
+DEVICE=laurel_sprout
+TG_USERNAME=@HemantSachdeva
+# Lets see machine specifications and environments
+df -h
+free -h
+nproc
+cat /etc/os*
+env
+
+cd ~/shrp # Depends on where source got synced
+
+REPO_URL=https://github.com/HemantSachdeva/laurel_sprout-GitActions
+virtualenv -p /usr/bin/python2.7 xyz && source xyz/bin/activate
+
+# Normal build steps
+. build/envsetup.sh
+lunch omni_$DEVICE-eng
+export CCACHE_DIR=~/ccache
+export CCACHE_EXEC=$(which ccache)
+export USE_CCACHE=1
+
+# Telgram env setup
+export BOT_MSG_URL="https://api.telegram.org/bot$BOT_API/sendMessage"
+export BOT_BUILD_URL="https://api.telegram.org/bot$BOT_API/sendDocument"
+
+tg_post_msg() {
+        curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
+        -d "parse_mode=html" \
+        -d text="$1"
+}
+
+tg_send_file() {
+	curl -F chat_id=$CHAT_ID -F document=@${1} -F parse_mode=markdown $BOT_BUILD_URL
+}
+
+make_shrp(){
+	tg_post_msg "<b>SHRP Build Started!</b>
+                 <b>Started on:</b> Github Actions
+                 <b>Date:</b> $(date)" "$CHAT_ID"
+	BUILD_START=$(date +%s)
+	mka recoveryimage
+	BUILD_END=$(date +%s)
+	DIFF=$(($BUILD_END - $BUILD_START))
+	MINUTES=$(($DIFF / 60))
+	SECONDS=$(($DIFF % 60))
+	if [ -f out/target/product/$DEVICE/SHRP_v*zip ]; then
+		cd out/target/product/$DEVICE
+		zip=$(ls SHRP_v*zip)
+		tg_post_msg "<b>$TG_USERNAME Build Completed in $MINUTES:$SECONDS minutes</b>
+		             %0A%0A<b>Zip Name : </b> <code>"$zip"</code>" "$CHAT_ID"
+	else
+		tg_post_msg "<b>$TG_USERNAME Build Failed in $MINUTES:$SECONDS minutes check <a href='${REPO_URL}/actions'>Actions</b>" "$CHAT_ID"
+	fi
+}
+
+send_shrp(){
+	if [ -f ~/shrp/out/target/product/$DEVICE/SHRP_v*zip ]; then
+	cd ~/shrp/out/target/product/$DEVICE
+	shrp_zip=$(ls SHRP_v*zip)
+	shrp_addon=$(ls SHRP_AddonRescue_v*zip)
+	tg_send_file $shrp_zip
+	tg_send_file $shrp_addon
+	shrp_zip=${shrp_zip%.*}
+	mv recovery.img $shrp_zip.img
+	tg_send_file $shrp_zip.img
+	fi
+}
+
+make_shrp
+send_shrp

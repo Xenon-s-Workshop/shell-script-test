@@ -1,0 +1,21 @@
+#!/bin/bash
+
+MANIFEST=git://github.com/SHRP/platform_manifest_twrp_omni.git
+BRANCH=v3_9.0
+DEVICE=laurel_sprout
+BRAND=xiaomi
+DT_LINK=https://github.com/HemantSachdeva/shrp_device_xiaomi_laurel_sprout
+
+mkdir -p ~/shrp
+cd ~/shrp
+
+# Repo init command, that -device,-mips,-darwin,-notdefault part will save you more time and storage to sync, add more according to your rom and choice. Optimization is welcomed! Let's make it quit, and with depth=1 so that no unnecessary things.
+repo init --no-repo-verify --depth=1 -u "$MANIFEST" -b "$BRANCH" -g default,-device,-mips,-darwin,-notdefault
+git config --global user.name Hemant Sachdeva
+git config --global user.email hemant.evolver@gmail.com
+
+# Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+
+# Sync stuffs
+git clone $DT_LINK --depth=1 --single-branch -b android-9.0 device/$BRAND/$DEVICE
