@@ -18,7 +18,7 @@ sudo curl --create-dirs -L -o /usr/local/bin/repo -O -L https://storage.googleap
 	sudo rm -rf /var/lib/apt/lists/*
 	sudo rm -rf /tmp/*
 
-	sudo ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+	sudo ln -sf /usr/share/zoneinfo/Asia/Dhaka /etc/localtime
 
 	# Free up some space
 
