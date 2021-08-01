@@ -19,7 +19,7 @@ jobs:
       - name: Download repo
         run: |
             pwd
-            git clone https://github.com/HemantSachdeva/kernel-GitActions.git ~/scripts
+            git clone https://github.com/XenonTheInertG/kernel-workflow.git ~/scripts
             chmod -R +x ~/scripts
       - name: Install packages
         run: |
