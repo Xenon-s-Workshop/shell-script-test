@@ -1,0 +1,87 @@
+#!/bin/bash
+
+TG_USERNAME=@XenonTheInertG
+# Lets see machine specifications and environments
+df -h
+free -h
+nproc
+cat /etc/os*
+env
+
+cd ~/kernel # Depends on where source got synced
+
+REPO_URL=https://github.com/HemantSachdeva/kernel-GitActions
+OUT=~/kernel/output/arch/arm64/boot
+PWD=$(pwd)
+ARCH=arm64
+CONFIG=vendor/laurel_sprout-perf_defconfig
+TC_CLANG=$PWD/../clang
+TC_GCC_ARM64=$PWD/../gcc
+TC_GCC_ARM32=$PWD/../gcc-arm
+
+# picked from this commit https://github.com/Jebaitedneko/android_kernel_xiaomi_olive/commit/823db672576da0c882f953f2938b233785b29add#diff-4d2a8eefdf2a9783512a35da4dc7676a66404b6f3826a8af9aad038722da6823 (credit:  Jebaitedneko @ github)
+YYLL1=$PWD/scripts/dtc/dtc-lexer.lex.c_shipped
+YYLL2=$PWD/scripts/dtc/dtc-lexer.l
+[ -f $YYLL1 ] && sed -i "s/extern YYLTYPE yylloc/YYLTYPE yylloc/g;s/YYLTYPE yylloc/extern YYLTYPE yylloc/g" $YYLL1
+[ -f $YYLL2 ] && sed -i "s/extern YYLTYPE yylloc/YYLTYPE yylloc/g;s/YYLTYPE yylloc/extern YYLTYPE yylloc/g" $YYLL2
+
+[ ! -d $TC_CLANG ] && {
+    echo "Cloning AOSP Clang..."
+    mkdir -p $TC_CLANG && wget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/android-10.0.0_r3/clang-r353983c.tar.gz -O clang.tar.gz && tar -xzf clang.tar.gz -C "$TC_CLANG" && rm clang.tar.gz
+
+}
+
+[ ! -d $TC_GCC_ARM64 ] && {
+    echo "Cloning 64-bit GCC..."
+    git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 --depth=1 "$TC_GCC_ARM64"
+
+}
+
+[ ! -d $TC_GCC_ARM32 ] && {
+    echo "Cloning 32-bit GCC..."
+        git clone https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 --depth=1 "$TC_GCC_ARM32"
+
+}
+
+
+export PATH="$TC_CLANG/bin:$TC_GCC_ARM64/bin:$TC_GCC_ARM32/bin:$PATH"
+export ARCH=arm64
+export SUBARCH=arm64
+
+[ ! -e output/.config ] && {
+    echo "Generating new config from $CONFIG.."
+    make $CONFIG O=output
+}
+
+
+# Telgram env setup
+export BOT_MSG_URL="https://api.telegram.org/bot$BOT_API/sendMessage"
+export BOT_BUILD_URL="https://api.telegram.org/bot$BOT_API/sendDocument"
+
+tg_post_msg() {
+        curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
+        -d "parse_mode=html" \
+        -d text="$1"
+}
+
+make_kernel(){
+	tg_post_msg "<b>KERNEL Build Started!</b>
+	<b>Started on:</b> Github Actions
+	<b>Date:</b> $(date)" "$CHAT_ID"
+	[ -e output/.config ] && {
+	echo "Starting Compilation..."
+	BUILD_START=$(date +%s)
+	make -j$(nproc --all) CC="$TC_CLANG/bin/clang" CROSS_COMPILE=$TC_GCC_ARM64/bin/aarch64-linux-android- CLANG_TRIPLE=$HOME/clang/bin/aarch64-linux-gnu- CROSS_COMPILE_ARM32=$TC_GCC_ARM32/bin/arm-linux-androideabi- O=output
+	BUILD_END=$(date +%s)
+	DIFF=$(($BUILD_END - $BUILD_START))
+	MINUTES=$(($DIFF / 60))
+	SECONDS=$(($DIFF % 60))
+	if [ -f $OUT/Image.gz-dtb ]; then
+		tg_post_msg "<b>$TG_USERNAME Build Completed in $MINUTES:$SECONDS minutes</b>" "$CHAT_ID"
+	else
+		tg_post_msg "<b>$TG_USERNAME Build Failed in $MINUTES:$SECONDS minutes check <a href='${REPO_URL}/actions'>Actions</a></b>" "$CHAT_ID"
+	fi
+   }
+}
+
+make_kernel

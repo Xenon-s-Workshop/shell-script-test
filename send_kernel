@@ -1,0 +1,26 @@
+#!/bin/bash
+
+cd ~/
+
+git clone https://github.com/XenonTheInertG/Kernel-Bakery
+OUT=~/kernel/output/arch/arm64/boot
+
+# Telgram env setup
+export BOT_MSG_URL="https://api.telegram.org/bot$BOT_API/sendMessage"
+export BOT_BUILD_URL="https://api.telegram.org/bot$BOT_API/sendDocument"
+
+tg_send_file() {
+	curl -F chat_id=$CHAT_ID -F document=@${1} -F parse_mode=markdown $BOT_BUILD_URL
+}
+
+send_kernel(){
+	if [ -f $OUT/Image.gz-dtb ]; then
+	cd ~/Anykernel3
+	cp $OUT/Image.gz-dtb .
+	cp $OUT/dtbo.img .
+	zip -r9 LineageOs-$(date +Oss-%H%M-%Y%m%d).zip * -x .git README.md *placeholder
+	tg_send_file LineageOs*.zip
+	fi
+}
+
+send_kernel
