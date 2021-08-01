@@ -1,7 +1,6 @@
 #!/bin/bash
 
 DEVICE=laurel_sprout
-TG_USERNAME=@HemantSachdeva
 # Lets see machine specifications and environments
 df -h
 free -h
@@ -36,7 +35,7 @@ tg_send_file() {
 }
 
 make_shrp(){
-	tg_post_msg "<b>SHRP Build Started!</b>
+	tg_post_msg "<b>🛠️CI|SHRP Build Started!</b>
                  <b>Started on:</b> Github Actions
                  <b>Date:</b> $(date)" "$CHAT_ID"
 	BUILD_START=$(date +%s)
@@ -48,10 +47,10 @@ make_shrp(){
 	if [ -f out/target/product/$DEVICE/SHRP_v*zip ]; then
 		cd out/target/product/$DEVICE
 		zip=$(ls SHRP_v*zip)
-		tg_post_msg "<b>$TG_USERNAME Build Completed in $MINUTES:$SECONDS minutes</b>
+		tg_post_msg "<b>Build Completed in $MINUTES:$SECONDS minutes</b>
 		             %0A%0A<b>Zip Name : </b> <code>"$zip"</code>" "$CHAT_ID"
 	else
-		tg_post_msg "<b>$TG_USERNAME Build Failed in $MINUTES:$SECONDS minutes check <a href='${REPO_URL}/actions'>Actions</b>" "$CHAT_ID"
+		tg_post_msg "<b>Build Failed in $MINUTES:$SECONDS minutes check <a href='${REPO_URL}/actions'>Actions</b>" "$CHAT_ID"
 	fi
 }
 
