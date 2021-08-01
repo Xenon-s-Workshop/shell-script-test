@@ -15,7 +15,7 @@ tg_send_file() {
 
 send_kernel(){
 	if [ -f $OUT/Image.gz-dtb ]; then
-	cd ~/Anykernel3
+	cd ~/Kernel-Bakery
 	cp $OUT/Image.gz-dtb .
 	cp $OUT/dtbo.img .
 	zip -r9 LineageOs-$(date +Oss-%H%M-%Y%m%d).zip * -x .git README.md *placeholder
