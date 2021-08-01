@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVICE=laurel_sprout
+DEVICE=lancelot
 # Lets see machine specifications and environments
 df -h
 free -h
