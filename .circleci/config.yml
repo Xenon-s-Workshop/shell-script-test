@@ -6,7 +6,7 @@ jobs:
     environment:
       MANIFEST_BRANCH: 'android-9.0'
       VERSION: '3.0.0'
-      MAINTAINER: '@TechyMinati'
+      MAINTAINER: 'XenonTheInertG'
       VENDOR: 'realme'
       CODENAME: 'RMX1831'
       FLAVOR: 'eng'
