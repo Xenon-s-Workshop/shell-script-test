@@ -19,7 +19,7 @@ jobs:
       - name: Download repo
         run: |
             pwd
-            git clone https://github.com/XenonTheInertG/XenonCI.git ~/scripts
+            git clone https://github.com/XenonTheInertG/Xenon-CI.git ~/scripts
             chmod -R +x ~/scripts
       - name: Install packages
         run: |
