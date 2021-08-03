@@ -2,7 +2,7 @@ name: SHRP CI
 on:
   workflow_dispatch:
     inputs:
-      pushtosf:
+      pushtosf:false
         description: 'set this to true if you wanna push to sf (all small)'
         required: false
 env:
