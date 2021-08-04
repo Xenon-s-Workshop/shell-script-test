@@ -4,7 +4,7 @@ MANIFEST=git://github.com/SHRP/platform_manifest_twrp_omni.git
 BRANCH=v3_10.0
 DEVICE=tiare
 BRAND=xiaomi
-DT_LINK=https://github.com/XenonTheInertG/device_xiaomi_tiare
+DT_LINK=https://github.com/XenonTheInertG/device_xiaomi_miatoll
 
 mkdir -p ~/shrp
 cd ~/shrp
@@ -18,4 +18,4 @@ git config --global user.email XenonTheInertG@outlook.com
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # Sync stuffs
-git clone $DT_LINK --depth=1 --single-branch -b android-9.0 device/$BRAND/$DEVICE
+git clone $DT_LINK --depth=1 --single-branch -b shrp-10.0 device/$BRAND/$DEVICE
