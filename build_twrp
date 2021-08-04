@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVICE=miatoll
+DEVICE=m01q
 # Lets see machine specifications and environments
 df -h
 free -h
