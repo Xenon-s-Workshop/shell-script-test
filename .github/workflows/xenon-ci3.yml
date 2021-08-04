@@ -1,4 +1,4 @@
-name: Recovery-CI
+name: TWRP-CI
 
 on: 
  
@@ -33,4 +33,4 @@ jobs:
       - name: Build Recovery
         run: |
             cd ~/scripts
-            ./build_shrp
+            ./build_twrp
