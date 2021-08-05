@@ -2,16 +2,16 @@ name: 'AIO'
 on:
   workflow_dispatch:
     inputs:
-      manifest:https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-10.0
+      manifest: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-10.0
         description: 'Recovery Manifest URL with -b branch'
         required: true
-      vendor:Infinix
+      vendor: Infinix
         description: 'Device Company / OEM / Vendor, i.e., xiaomi'
         required: true
-      codename:
+      codename: Infinix-X688C
         description: 'Device Codename i.e rosy'
         required: true
-      dt_link:https://github.com/XenonTheInertG/android_device_Infinix-X688C -b A10
+      dt_link: https://github.com/XenonTheInertG/android_device_Infinix-X688C -b A10
         description: 'Device Tree link, with optional -b branch'
         required: true
       kernel_link:
@@ -45,7 +45,7 @@ env:
   FLAVOR: ${{ github.event.inputs.flavor }}
   REQ_QCOM_COMMONSYS: ${{ github.event.inputs.req_qcom_commonsys }}
   CRYPTFS_FIX : ${{ github.event.inputs.cryptfs_fix }}
-  TZ: Asia/Kolkata
+  TZ: Asia/Dhaka
 
 jobs:
   build:
