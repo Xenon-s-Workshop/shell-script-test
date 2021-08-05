@@ -1,0 +1,77 @@
+name: 'AIO'
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        description: 'Recovery Manifest URL with -b branch'
+        required: true
+      vendor:
+        description: 'Device Company / OEM / Vendor, i.e., xiaomi'
+        required: true
+      codename:
+        description: 'Device Codename i.e rosy'
+        required: true
+      dt_link:
+        description: 'Device Tree link, with optional -b branch'
+        required: true
+      kernel_link:
+        description: 'Kernel repo link with optional -b branch, Use if not prebuilt'
+        required: false
+      req_qcom_commonsys:
+        description: 'If require QCOM commonsys, set this to true, i.e., SHRP needs this'
+        required: true
+        default: 'false'
+      cryptfs_fix:
+        description: 'If require to fix cryptfs_hw conflict, set this to true'
+        required: true
+        default: 'false'
+      target:
+        description: 'Build Target, i.e., recoveryimage'
+        required: true
+        default: 'recoveryimage'
+      flavor:
+        description: 'Build flavor, i.e., userdebug or eng'
+        required: true
+        default: 'eng'
+
+env:
+  MANIFEST: ${{ github.event.inputs.manifest }}
+  DT_LINK: ${{ github.event.inputs.dt_link }}
+  VENDOR: ${{ github.event.inputs.vendor }}
+  CODENAME: ${{ github.event.inputs.codename }}
+  KERNEL_LINK: ${{ github.event.inputs.kernel_link }}
+  KERNELISPREBUILT: ${{ github.event.inputs.kernelisprebuilt }}
+  TARGET: ${{ github.event.inputs.target }}
+  FLAVOR: ${{ github.event.inputs.flavor }}
+  REQ_QCOM_COMMONSYS: ${{ github.event.inputs.req_qcom_commonsys }}
+  CRYPTFS_FIX : ${{ github.event.inputs.cryptfs_fix }}
+  TZ: Asia/Kolkata
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Cleanup Space
+        uses: rokibhasansagar/slimhub_actions@main
+
+      - name: Initializing Build Environment
+        run: bash prepare.sh
+
+      - name: Make ${{ env.TARGET }} for ${{ env.CODENAME }}
+        run: bash builder.sh
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.CODENAME }}_${{ env.TARGET }}-zip
+          path: work/out/target/product/${{ env.CODENAME }}/*.zip
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.CODENAME }}_${{ env.TARGET }}
+          path: |
+            work/out/target/product/${{ env.CODENAME }}/recovery.img
+            work/out/target/product/${{ env.CODENAME }}/boot.img
