@@ -1,6 +1,8 @@
 name: 'AIO'
 on:
+
   workflow_dispatch:
+
     inputs:
       manifest: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-10.0
         description: 'Recovery Manifest URL with -b branch'
