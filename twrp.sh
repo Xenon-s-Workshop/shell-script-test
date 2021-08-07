@@ -3,11 +3,16 @@
 #set -eo pipefail
 
 #config var added
-1= #devicecodename
-2= #twrp branch(eg twrp-10.0)
-GITHUB_REPOSITORY= #repo link of your dt
-3= #build type
-4= #recovery type/variant (eg: userdebug/eng)
+1=mojito
+#devicecodename
+2=twrp-10.0
+#twrp branch(eg twrp-10.0)
+GITHUB_REPOSITORY=https://github.com/XenonTheInertG-CI/android_device_xiaomi_mojito
+#repo link of your dt
+3=eng
+#build type
+4=recovery
+#recovery type/variant (eg: userdebug/eng)
 
 if [[ -z $* ]]; then
 	echo "Usage:"
