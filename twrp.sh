@@ -6,8 +6,8 @@
 1= #devicecodename
 2= #twrp branch(eg twrp-10.0)
 GITHUB_REPOSITORY= #repo link of your dt
-3= #build type/build variant
-4= #recovery type
+3= #build type
+4= #recovery type/variant (eg: userdebug/eng)
 
 if [[ -z $* ]]; then
 	echo "Usage:"
