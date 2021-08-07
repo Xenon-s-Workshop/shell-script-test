@@ -2,6 +2,13 @@
 
 #set -eo pipefail
 
+#config var added
+1= #devicecodename
+2= #twrp branch(eg twrp-10.0)
+GITHUB_REPOSITORY= #repo link of your dt
+3= #build type/build variant
+4= #recovery type
+
 if [[ -z $* ]]; then
 	echo "Usage:"
 	echo "	./twrp.sh <devicecodename> <twrpbranch> <buildtype> <recoverytype>"
