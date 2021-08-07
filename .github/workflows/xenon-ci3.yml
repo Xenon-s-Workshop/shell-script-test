@@ -22,4 +22,4 @@ jobs:
       - name: Sync source & Build
         run: |
             cd ~/scripts
-            ./twrp.sh <devicecodename> <twrpbranch> <buildtype> <recoverytype>
+            ./twrp.sh mojito twrp-10.0 eng recovery
