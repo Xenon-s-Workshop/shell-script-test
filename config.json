@@ -1,0 +1,16 @@
+{
+  "twrp_url": "https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni",
+  "twrp_branch": "twrp-10.0",
+  "git_username": "XenonTheInertG",
+  "git_email": "XenonTheInertG@outlook.com",
+  "use_own_dt": true,
+  "dt_url": "TeamWin/android_device_oneplus_cheeseburger_dumpling",
+  "dt_branch": "main",
+  "dt_remote": "github",
+  "dt_path": "device/xiaomi/mojito",
+  "device_code": "mojito",
+  "fix_product": true,
+  "fix_misscom": true,
+  "fix_busybox": false,
+  "fix_branch": "android-10.0"
+}
