@@ -81,7 +81,6 @@ jobs:
       run: cp repair/omni-9.0/busybox.xml workspace/.repo/local_manifests/
       
     - name: Clone your own device tree
-      if: steps.var.outputs.use_own_dt == 'true'
       run: |
         sed -i 's!dt_url!${{ steps.var.outputs.dt_url }}!g' device.xml
         sed -i 's!dt_path!${{ steps.var.outputs.dt_path }}!g' device.xml
