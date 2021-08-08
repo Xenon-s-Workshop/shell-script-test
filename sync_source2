@@ -2,9 +2,9 @@
 
 MANIFEST=git://github.com/SHRP/platform_manifest_twrp_omni.git
 BRANCH=v3_10.0
-DEVICE=miatoll
-BRAND=xiaomi
-DT_LINK=https://github.com/XenonTheInertG/device_xiaomi_miatoll
+DEVICE=RX7_Mini
+BRAND=walton
+DT_LINK=https://github.com/XenonTheInertG/shrp_device_RX7_Mini
 
 mkdir -p ~/shrp
 cd ~/shrp
