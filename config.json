@@ -10,7 +10,7 @@
   "dt_path": "device/xiaomi/mojito",
   "device_code": "mojito",
   "fix_product": true,
-  "fix_misscom": true,
+  "fix_misscom": false,
   "fix_busybox": false,
   "fix_branch": "android-10.0"
 }
