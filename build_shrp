@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVICE=RX7_Mini
+DEVICE=mojito
 # Lets see machine specifications and environments
 df -h
 free -h
