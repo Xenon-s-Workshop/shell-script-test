@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 env:
-  CHAT_ID: ${{ secrets.CHAT_ID }} # Go to repository settings>secrets and give your values
-  BOT_API: ${{ secrets.BOT_API }} # for CHAT_ID and BOT_API
+  CHATID: ${{ secrets.CHAT_ID }} # Go to repository settings>secrets and give your values
+  API_BOT: ${{ secrets.BOT_API }} # for CHAT_ID and BOT_API
 
 jobs:
   build:
@@ -22,4 +22,4 @@ jobs:
       - name: Sync source & Build
         run: |
             cd ~/scripts
-            ./twrp.sh mojito twrp-10.0 eng recovery
+            ./twrp.sh
