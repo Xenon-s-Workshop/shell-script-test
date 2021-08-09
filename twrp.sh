@@ -13,8 +13,8 @@ green='\e[0;32m'
 
 # Few env setup
 
-CHATID="$chat"
-API_BOT="$api"
+CHATID="$CHAT_ID"
+API_BOT="$BOT_API"
 
 # put device product/device name/device codename
 VENDOR=""
