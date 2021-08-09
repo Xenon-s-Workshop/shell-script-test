@@ -17,16 +17,16 @@ CHATID="$CHAT_ID"
 API_BOT="$BOT_API"
 
 # put device product/device name/device codename
-VENDOR="xiaomi"
-DEVICE="redmi k20 pro"
-CODENAME="raphael"
+VENDOR="asus"
+DEVICE="rog 3"
+CODENAME="I003D"
 
 # Put the url for the device tree on github and branch
-DEVICE_TREE="https://github.com/XenonTheInertG/android_device_xiaomi_raphael"
-DEVICE_BRANCH="android-9.0"
+DEVICE_TREE="https://github.com/TeamWin/android_device_asus_I003D"
+DEVICE_BRANCH="android-10"
 
 # Check https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni branches for that
-TWRP_VERSION="twrp-9.0"
+TWRP_VERSION="twrp-10.0"
 
 # Telgram env setup
 export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
@@ -63,7 +63,7 @@ tg_error() {
 build_twrp() {
 Start=$(date +"%s")
 
-. build/envsetup && lunch omni_"$CODENAME"-eng && export ALLOW_MISSING_DEPENDENCIES=true
+. build/envsetup.sh && lunch omni_"$CODENAME"-eng && export ALLOW_MISSING_DEPENDENCIES=true
 mka recoveryimage | tee error.log
 
 End=$(date +"%s")
