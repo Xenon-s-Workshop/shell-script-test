@@ -19,13 +19,12 @@ jobs:
             pwd
             git clone https://github.com/XenonTheInertG/Xenon-CI.git ~/scripts
             chmod -R +x ~/scripts
-
-        - name: Install packages
+      - name: Install packages
         run: |
             cd ~/scripts
             ./install_packages2
       
-      - name: Sync source & Build
+      - name: Sync Source & build
         run: |
             cd ~/scripts
             ./twrp.sh
