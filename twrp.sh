@@ -17,16 +17,16 @@ CHATID="$CHAT_ID"
 API_BOT="$BOT_API"
 
 # put device product/device name/device codename
-VENDOR=""
-DEVICE=""
-CODENAME=""
+VENDOR="xiaomi"
+DEVICE="redmi k20 pro"
+CODENAME="raphael"
 
 # Put the url for the device tree on github and branch
-DEVICE_TREE=""
-DEVICE_BRANCH=""
+DEVICE_TREE="https://github.com/XenonTheInertG/android_device_xiaomi_raphael"
+DEVICE_BRANCH="android-9.0"
 
 # Check https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni branches for that
-TWRP_VERSION=""
+TWRP_VERSION="twrp-9.0"
 
 # Telgram env setup
 export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
