@@ -18,7 +18,7 @@ API_BOT="$BOT_API"
 
 # put device product/device name/device codename
 VENDOR="motorola"
-DEVICE="rog 3"
+DEVICE="moto g9 power"
 CODENAME="cebu"
 
 # Put the url for the device tree on github and branch
