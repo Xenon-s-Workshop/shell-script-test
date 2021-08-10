@@ -17,12 +17,12 @@ CHATID="$CHAT_ID"
 API_BOT="$BOT_API"
 
 # put device product/device name/device codename
-VENDOR="asus"
+VENDOR="motorola"
 DEVICE="rog 3"
-CODENAME="I003D"
+CODENAME="cebu"
 
 # Put the url for the device tree on github and branch
-DEVICE_TREE="https://github.com/TeamWin/android_device_asus_I003D"
+DEVICE_TREE="https://github.com/TeamWin/android_device_motorola_cebu"
 DEVICE_BRANCH="android-10"
 
 # Check https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni branches for that
