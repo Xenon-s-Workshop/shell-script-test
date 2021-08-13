@@ -11,10 +11,6 @@ white='\033[0m'
 red='\033[0;31m'
 green='\e[0;32m'
 
-# Few env setup
-
-CHATID="$CHAT_ID"
-API_BOT="$BOT_API"
 
 # put device product/device name/device codename
 VENDOR="motorola"
@@ -29,8 +25,8 @@ DEVICE_BRANCH="android-10"
 TWRP_VERSION="twrp-10.0"
 
 # Telgram env setup
-export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
-export BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
+export BOT_MSG_URL="https://api.telegram.org/bot$BOT_API/sendMessage"
+export BOT_BUILD_URL="https://api.telegram.org/bot$BOT_API/sendDocument"
 
 tg_post_msg() {
         curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
@@ -82,7 +78,7 @@ git clone "$DEVICE_TREE" -b "$DEVICE_BRANCH" device/"$VENDOR"/"$CODENAME"/
 
 # let's start building the image
 
-tg_post_msg "<b>🛠️TWRP CI Build Triggered for $CODENAME</b>" "$CHATID"
+tg_post_msg "<b>🛠️TWRP CI Build Triggered for $CODENAME</b>" "$CHAT_ID"
 build_twrp || error=true
 DATE=$(date +"%Y%m%d-%H%M%S")
 
@@ -90,7 +86,7 @@ DATE=$(date +"%Y%m%d-%H%M%S")
 		echo -e "$green << Build completed in $(($Diff / 60)) minutes and $(($Diff % 60)) seconds >> \n $white"
 	else
 		echo -e "$red << Failed to compile the TWRP image , Check up error.log >>$white"
-		tg_error "error.log" "$CHATID"
+		tg_error "error.log" "$CHAT_ID"
 		rm -rf out
 		rm -rf error.log
 		exit 1
@@ -101,6 +97,6 @@ DATE=$(date +"%Y%m%d-%H%M%S")
 		mkdir sender
 		mv "$IMG" sender/"$TWRP_IMGAGE"
 		cd sender
-		tg_post_build "$TWRP_IMGAGE" "$CHATID"
+		tg_post_build "$TWRP_IMGAGE" "$CHAT_ID"
 		exit
 	fi
