@@ -13,13 +13,13 @@ green='\e[0;32m'
 
 
 # put device product/device name/device codename
-VENDOR="motorola"
-DEVICE="moto g9 power"
-CODENAME="cebu"
+VENDOR="infinix"
+DEVICE="hot 10"
+CODENAME="Infinix-X682C"
 
 # Put the url for the device tree on github and branch
-DEVICE_TREE="https://github.com/TeamWin/android_device_motorola_cebu"
-DEVICE_BRANCH="android-10"
+DEVICE_TREE="https://github.com/XenonTheInertG/android_device_infinix_Infinix-X682C"
+DEVICE_BRANCH="main"
 
 # Check https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni branches for that
 TWRP_VERSION="twrp-10.0"
