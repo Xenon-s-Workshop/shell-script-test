@@ -1,4 +1,4 @@
-name: Firmware Dumper
+name: Dumper CI
 on:
   workflow_dispatch:
 
