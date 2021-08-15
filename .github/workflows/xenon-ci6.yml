@@ -1,8 +1,6 @@
-name: Dump
- 
+name: Firmware Dumper
 on:
-
-workflow_dispatch
+  workflow_dispatch:
 
 defaults:
   run:
