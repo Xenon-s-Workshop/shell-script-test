@@ -1,0 +1,44 @@
+name: Dump
+ 
+on:
+
+workflow_dispatch
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  ROM_URL: https://mirrors.lolinet.com/firmware/lenovo/Tab_M10_HD/TB-X505X/TB-X505X_USR_S001033_2003030144_Q00015_ROW.zip
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkouts
+         uses: actions/checkout@v2
+
+       - name: Clone Dumpyara
+         run: |
+              git clone https://github.com/HyperNotAryanX97/phoenix_firmware_dumper xenonci
+
+       - name: Setup Dumpyara environment
+         working-directory: xenonci
+         run: |
+              sudo bash setup.sh
+              git config --global user.name "XenonTheInertG"
+              git config --global user.email "XenonTheInertG@outlook.com"
+
+       - name: Setup config envs
+         working-directory: xenonci
+         run: |
+              echo "${{ secrets.GIT_TOKEN }}" > .github_token
+              echo "${{ secrets.GITORGNAME }}" > .git_orgname
+              echo "${{ secrets.BOT_TOKEN }}" > .tg_token
+              echo "${{ secrets.CHAT_ID }}" > .tg_chat
+
+       - name: Running Dumpyara
+         working-directory: xenonci
+         run: |
+              ./dumper.sh  "$ROM_URL"
