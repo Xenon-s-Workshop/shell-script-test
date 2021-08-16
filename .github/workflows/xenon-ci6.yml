@@ -34,7 +34,7 @@ jobs:
               echo "${{ secrets.GIT_TOKEN }}" > .github_token
               echo "${{ secrets.GITORGNAME }}" > .git_orgname
               echo "${{ secrets.BOT_TOKEN }}" > .tg_token
-              echo "${{ secrets.CHAT_ID }}" > .tg_chat
+              echo "${{ secrets.CHAT }}" > .tg_chat
 
        - name: Running Dumpyara
          working-directory: xenonci
