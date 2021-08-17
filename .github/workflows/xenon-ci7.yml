@@ -1,8 +1,11 @@
 name: twrpdtgen
-author: XenonTheInertG
 
 on:
-workflow_dispatch:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
 
 env:
   RECOVERY: (put recovery/boot image dl link here)
