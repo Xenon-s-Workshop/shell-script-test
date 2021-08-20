@@ -14,15 +14,15 @@ green='\e[0;32m'
 
 # put device product/device name/device codename
 VENDOR="xiaomi"
-DEVICE="Pocophone F1"
-CODENAME="beryllium"
+DEVICE="Redmi 6"
+CODENAME="cereus"
 
 # Put the url for the device tree on github and branch
-DEVICE_TREE="https://github.com/TeamWin/android_device_xiaomi_beryllium"
-DEVICE_BRANCH="android-9.0"
+DEVICE_TREE="https://github.com/TeamWin/android_device_xiaomi_cereus"
+DEVICE_BRANCH="android-10.0"
 
 # Check https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni branches for that
-TWRP_VERSION="twrp-9.0"
+TWRP_VERSION="twrp-10.0"
 
 # Telgram env setup
 export BOT_MSG_URL="https://api.telegram.org/bot$BOT_API/sendMessage"
