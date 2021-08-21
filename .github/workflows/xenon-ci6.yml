@@ -1,4 +1,4 @@
-name: TWRP-CI2
+name: Recovery CI
 
 on:
   workflow_dispatch:
