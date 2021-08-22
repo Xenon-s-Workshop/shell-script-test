@@ -29,7 +29,7 @@ jobs:
 
     steps:
        - name: Checkout
-         uses: actions/checkout@master
+         uses: actions/checkout@main
 
        - name: Cleanup space
          uses: rokibhasansagar/slimhub_actions@main
