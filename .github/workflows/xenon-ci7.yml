@@ -32,7 +32,7 @@ jobs:
          uses: actions/checkout@master
 
        - name: Cleanup space
-         uses:    rokibhasansagar/slimhub_actions@main
+         uses: rokibhasansagar/slimhub_actions@main
          
        - name: Initializing environment
          run: |
