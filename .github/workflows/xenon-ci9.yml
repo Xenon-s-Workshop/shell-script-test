@@ -48,8 +48,8 @@ jobs:
         bash -x build2.sh
       shell: bash
 
-    - name : Upload recovery image
-       uses: appleboy/telegram-action@master
+    - name: Upload recovery image
+      uses: appleboy/telegram-action@master
   with:
     to: ${{ secrets.CHAT_ID }}
     token: ${{ secrets.BOT_API }}
