@@ -48,10 +48,10 @@ jobs:
         bash -x build2.sh
       shell: bash
 
-    - name: Upload recovery image
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.CHAT_ID }}
-     token: ${{ secrets.BOT_API }}
+ - name: Upload recovery image
+   uses: appleboy/telegram-action@master
+ with:
+   to: ${{ secrets.CHAT_ID }}
+   token: ${{ secrets.BOT_API }}
    message: OrangeFox Recovery for Spinel is built!
-    document: /home/runner/work/orangefox/out/target/product/*/*.img
+   document: /home/runner/work/orangefox/out/target/product/*/*.img
