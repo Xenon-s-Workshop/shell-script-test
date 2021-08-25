@@ -51,8 +51,6 @@ jobs:
         chmod +x build2.sh
         bash -x build2.sh
       shell: bash
-
-
     - name: "Post build to Telegram"
       uses: appleboy/telegram-action@master
       with:
