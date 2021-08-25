@@ -125,7 +125,7 @@ LINUXVER=$(make kernelversion)
 COMMIT_HEAD=$(git log --oneline -1)
 
 # Set Date
-DATE=$(TZ=Asia/Dhaka date +"%Y-%m-%d")
+DATE=$(TZ=Asia/Kolkata date +"%Y-%m-%d")
 
 #Now Its time for other stuffs like cloning, exporting, etc
 
@@ -177,7 +177,7 @@ DATE=$(TZ=Asia/Dhaka date +"%Y-%m-%d")
 # Function to replace defconfig versioning
 setversioning() {
     # For staging branch
-    KERNELNAME="Redux-$LINUXVER-$VARIANT-X01BD-$(TZ=Asia/Dhaka date +"%Y-%m-%d-%s")"
+    KERNELNAME="Redux-$LINUXVER-$VARIANT-X01BD-$(TZ=Asia/Kolkata date +"%Y-%m-%d-%s")"
     # Export our new localversion and zipnames
     export KERNELNAME
     export ZIPNAME="$KERNELNAME.zip"
@@ -280,7 +280,7 @@ tg_send_files(){
 	MD5CHECK=$(md5sum "$KernelFiles" | cut -d' ' -f1)
 	SID="CAACAgUAAxkBAAIlv2DEzB-BSFWNyXkkz1NNNOp_pm2nAAIaAgACXGo4VcNVF3RY1YS8HwQ"
 	STICK="CAACAgUAAxkBAAIlwGDEzB_igWdjj3WLj1IPro2ONbYUAAIrAgACHcUZVo23oC09VtdaHwQ"
-    MSG="<b>Build Done</b>
+    MSG="✅ <b>Build Done</b>
 - <code>$((DIFF / 60)) minute(s) $((DIFF % 60)) second(s) </code>
 <b>Build Type</b>
 -<code>$BUILD_TYPE</code>
@@ -391,7 +391,7 @@ build_kernel() {
 			else
 			if [ "$PTTG" = 1 ]
  			then
-				tg_post_msg "<b>Error! Compilaton failed: Kernel Image missing</b>
+				tg_post_msg "<b>❌Error! Compilaton failed: Kernel Image missing</b>
 <b>Build Date: </b><code>$DATE</code>
 <b>Kernel Name: </b><code>Redux-$VARIANT-$DEVICE</code>
 <b>Linux Tag Version: </b><code>$LINUXVER</code>
