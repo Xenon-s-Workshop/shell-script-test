@@ -3,6 +3,10 @@ name: OFRP-CI
 on:
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
 
   build:
