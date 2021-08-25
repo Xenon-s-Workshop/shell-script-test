@@ -1,7 +1,11 @@
 name: SHRP-CI
 
-on: 
+on:
   workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
 
 env:
   CHAT_ID: ${{ secrets.CHAT_ID }} # Go to repository settings>secrets and give your values
