@@ -14,6 +14,6 @@ jobs:
       - name: Build kernel 
         env:
            TELEGRAM_TOKEN: ${{ secrets.BOT_API }}
-           TELEGRAM_CHATID: ${{ secrets.CHATID }}
+           TELEGRAM_CHATID: ${{ secrets.CHAT_ID }}
         run: bash build.sh
         
