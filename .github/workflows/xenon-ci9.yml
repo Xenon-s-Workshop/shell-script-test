@@ -52,10 +52,10 @@ jobs:
         bash -x build2.sh
       shell: bash
 
-    - name: Upload recovery image
+- name: "Post build to Telegram"
       uses: appleboy/telegram-action@master
       with:
-      to: ${{ secrets.CHAT_ID }}
-      token: ${{ secrets.BOT_API }}
+        to: ${{ secrets.CHAT_ID }}
+        token: ${{ secrets.BOT_ID }}
       message: OrangeFox Recovery for Spinel is built!
       document: /home/runner/work/orangefox/out/target/product/*/*.img
