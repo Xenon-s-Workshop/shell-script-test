@@ -1,5 +1,4 @@
 name: OFRP-CI
-
 on:
   workflow_dispatch:
 
