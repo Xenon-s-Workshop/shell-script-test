@@ -50,8 +50,8 @@ jobs:
 
     - name: Upload recovery image
       uses: appleboy/telegram-action@master
-  with:
-    to: ${{ secrets.CHAT_ID }}
-    token: ${{ secrets.BOT_API }}
-    message: OrangeFox Recovery for Spinel is built!
+      with:
+        to: ${{ secrets.CHAT_ID }}
+     token: ${{ secrets.BOT_API }}
+   message: OrangeFox Recovery for Spinel is built!
     document: /home/runner/work/orangefox/out/target/product/*/*.img
