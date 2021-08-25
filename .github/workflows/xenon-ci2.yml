@@ -1,5 +1,4 @@
 name: SHRP-CI
-
 on:
   workflow_dispatch:
 
@@ -15,15 +14,15 @@ jobs:
   build:
     runs-on: ubuntu-18.04
 
-    steps:    
+    steps:
+      - name: Cleanup space
+       uses: rokibhasansagar/slimhub_actions@main
+             
       - name: Download repo
         run: |
             pwd
             git clone https://github.com/XenonTheInertG/Xenon-CI.git ~/scripts
             chmod -R +x ~/scripts
-
-      - name: Claim More disks
-       uses: rokibhasansagar/slimhub_actions@main
          
       - name: Install packages
         run: |
