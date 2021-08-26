@@ -36,6 +36,7 @@ jobs:
         chmod +x ~/bin/repo
         git config --global user.name "OrangeFox Volla Phone CI"
         git config --global user.email "thisemaildoesnotexist@exist.com"
+    
     - name: Downloading source code
       run: |
         source of.env
@@ -45,7 +46,6 @@ jobs:
         repo init --depth=1 -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0
         repo sync -j8 -c 
         git clone https://github.com/00p513-dev/device_infinix_spinel device/infinix/spinel -b main --depth=1 
- 
    - name: Build recovery
       run: |
         chmod +x build2.sh
