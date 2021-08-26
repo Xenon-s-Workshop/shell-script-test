@@ -18,8 +18,8 @@ send_kernel(){
 	cd ~/Kernel-Bakery
 	cp $OUT/Image.gz-dtb .
 	cp $OUT/dtbo.img .
-	zip -r9 Elle-laurel_sprout-$(date +Xe-%H%M-%Y%m%d).zip * -x .git README.md *placeholder
-	tg_send_file Elle-laurel_sprout*.zip
+	zip -r9 Linux-Chaldeans_vayu-$(date +Xe-%H%M-%Y%m%d).zip * -x .git README.md *placeholder
+	tg_send_file Linux-Chaldeans_vayu*.zip
 	fi
 }
 
