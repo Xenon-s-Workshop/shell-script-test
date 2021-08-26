@@ -46,7 +46,7 @@ jobs:
         repo init --depth=1 -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0
         repo sync -j8 -c 
         git clone https://github.com/00p513-dev/device_infinix_spinel device/infinix/spinel -b main --depth=1
-
+#Builiding starts here
    - name: Post build to Telegram
      uses: appleboy/telegram-action@master
      with:
@@ -54,10 +54,16 @@ jobs:
         token: ${{ secrets.BOT_ID }}
         message: 🛠️CI| OrangeFox Recovery for Spinel building started!
 
-   - name: Build recovery
-      run: |
-        chmod +x build2.sh
-        bash -x build2.sh
+       - name: Download repo
+        run: |
+            pwd
+            git clone https://github.com/XenonTheInertG/Xenon-CI.git ~/scripts
+            chmod -R +x ~/scripts
+
+      - name: Build Recovery
+        run: |
+            cd ~/scripts
+            ./build.sh
         
    - name : Upload recovery image
       uses: actions/upload-artifact@master
