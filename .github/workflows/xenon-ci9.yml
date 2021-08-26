@@ -45,7 +45,8 @@ jobs:
         #repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-9.0 --depth=1
         repo init --depth=1 -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0
         repo sync -j8 -c 
-        git clone https://github.com/00p513-dev/device_infinix_spinel device/infinix/spinel -b main --depth=1 
+        git clone https://github.com/00p513-dev/device_infinix_spinel device/infinix/spinel -b main --depth=1
+
    - name: Build recovery
       run: |
         chmod +x build2.sh
@@ -57,9 +58,9 @@ jobs:
         name: Images
         path: /home/runner/work/orangefox/out/target/product/*/*.img && *zip
 
-    - name: Post build to Telegram
-      uses: appleboy/telegram-action@master
-      with:
+   - name: Post build to Telegram
+     uses: appleboy/telegram-action@master
+     with:
         to: ${{ secrets.CHAT_ID }}
         token: ${{ secrets.BOT_ID }}
         message: 🛠️CI| OrangeFox Recovery for Spinel is built! Recovery uploaded in github artifacts.
