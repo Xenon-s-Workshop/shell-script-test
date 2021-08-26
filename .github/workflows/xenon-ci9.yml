@@ -46,10 +46,11 @@ jobs:
         repo sync -j8 -c 
         git clone https://github.com/00p513-dev/device_infinix_spinel device/infinix/spinel -b main --depth=1 
  
-    - name: Build recovery
+   - name: Build recovery
       run: |
         chmod +x build2.sh
         bash -x build2.sh
+        
    - name : Upload recovery image
       uses: actions/upload-artifact@master
       with:
