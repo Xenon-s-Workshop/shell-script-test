@@ -50,7 +50,6 @@ jobs:
       run: |
         chmod +x build2.sh
         bash -x build2.sh
-
    - name : Upload recovery image
       uses: actions/upload-artifact@master
       with:
