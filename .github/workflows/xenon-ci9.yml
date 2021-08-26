@@ -47,6 +47,13 @@ jobs:
         repo sync -j8 -c 
         git clone https://github.com/00p513-dev/device_infinix_spinel device/infinix/spinel -b main --depth=1
 
+   - name: Post build to Telegram
+     uses: appleboy/telegram-action@master
+     with:
+        to: ${{ secrets.CHAT_ID }}
+        token: ${{ secrets.BOT_ID }}
+        message: 🛠️CI| OrangeFox Recovery for Spinel building started!
+
    - name: Build recovery
       run: |
         chmod +x build2.sh
@@ -63,4 +70,4 @@ jobs:
      with:
         to: ${{ secrets.CHAT_ID }}
         token: ${{ secrets.BOT_ID }}
-        message: 🛠️CI| OrangeFox Recovery for Spinel is built! Recovery uploaded in github artifacts.
+        message: Build completed Successfully! Recovery uploaded in github artifacts.
