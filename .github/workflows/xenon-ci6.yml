@@ -48,10 +48,9 @@ jobs:
               cd work
               . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
 
-       - name: "Post build to Telegram"
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.CHAT_ID }}
-        token: ${{ secrets.BOT_ID }}      
-        message: SHRP for Vayu is built!
-        document: cd work/out/target/product/$DEVICE
+       - name: Upload recovery image
+         run: |
+              cd work/out/target/product/$DEVICE
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer wet recovery.img && ./transfer wet *Unofficial*.zip
+
