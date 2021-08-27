@@ -6,12 +6,13 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     env:
       VENDOR: infinix
       DEVICE: spinel
       ANDROID_ROOT: /home/runner/work/orangefox/
+      GITHUB_REPOSITORY: Xenon-CI
 
     steps:
     - name: Checkout
