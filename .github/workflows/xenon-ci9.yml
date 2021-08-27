@@ -1,12 +1,7 @@
 name: OFRP-CI
-author: XenonTheInertG
 
 on:
   workflow_dispatch:
-
-defaults:
-  run:
-    shell: bash
 
 jobs:
 
@@ -20,7 +15,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@main
+      uses: actions/checkout@master
     
     - name: Initialization environment
       run: |
@@ -37,7 +32,6 @@ jobs:
         chmod +x ~/bin/repo
         git config --global user.name "OrangeFox Volla Phone CI"
         git config --global user.email "thisemaildoesnotexist@exist.com"
-    
     - name: Downloading source code
       run: |
         source of.env
@@ -46,34 +40,23 @@ jobs:
         #repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-9.0 --depth=1
         repo init --depth=1 -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0
         repo sync -j8 -c 
-        git clone https://github.com/00p513-dev/device_infinix_spinel device/infinix/spinel -b main --depth=1																
-   - name: Post build to Telegram
-     uses: appleboy/telegram-action@master
-     with:
-        to: ${{ secrets.CHAT_ID }}
-        token: ${{ secrets.BOT_ID }}
-        message: 🛠️CI| OrangeFox Recovery for Spinel building started!
+        git clone https://github.com/00p513-dev/device_infinix_spinel device/infinix/spinel -b main --depth=1 
+ 
+    - name: Build recovery
+      run: |
+        chmod +x build2.sh
+        bash -x build2.sh
+      shell: bash
 
-       - name: Download repo
-        run: |
-            pwd
-            git clone https://github.com/XenonTheInertG/Xenon-CI.git ~/scripts
-            chmod -R +x ~/scripts
-
-      - name: Build Recovery
-        run: |
-            cd ~/scripts
-            ./build.sh
-        
-   - name : Upload recovery image
+    - name : Upload recovery image
       uses: actions/upload-artifact@master
       with:
         name: Images
-        path: /home/runner/work/orangefox/out/target/product/*/*.img && *zip
+        path: /home/runner/work/orangefox/out/target/product/*/*.img
 
-   - name: Post build to Telegram
-     uses: appleboy/telegram-action@master
-     with:
+    - name: Post build to Telegram
+      uses: appleboy/telegram-action@master
+      with:
         to: ${{ secrets.CHAT_ID }}
         token: ${{ secrets.BOT_ID }}
-        message: Build completed Successfully! Recovery uploaded in github artifacts.
+        message: 🛠️CI| OrangeFox Recovery for Spinel is built! Recovery uploaded in github artifacts.
