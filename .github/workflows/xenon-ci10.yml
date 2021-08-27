@@ -20,7 +20,7 @@ jobs:
       id: vars
       run: |
         echo "::set-output name=short_sha::$(git rev-parse HEAD | cut -b 1-8 -)"
-        echo "::set-output name=release_name::Dark-Ages-Xenon"
+        echo "::set-output name=release_name::Dark-Ages-Último"
 
     - name: "Checkout zipper"
       uses: actions/checkout@v2
