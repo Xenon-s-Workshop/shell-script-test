@@ -78,8 +78,7 @@ git clone "$DEVICE_TREE" -b "$DEVICE_BRANCH" device/"$VENDOR"/"$CODENAME"/
 
 # let's start building the image
 
-tg_post_msg "<b>🛠️TWRP CI Build Triggered for $CODENAME</b>"
-"<b>Started on: Aws 8 Core 32gib</b>" "$CHAT_ID"
+tg_post_msg "<b>🛠️TWRP CI Build Triggered for $CODENAME</b>" "$CHAT_ID"
 build_twrp || error=true
 DATE=$(date +"%Y%m%d-%H%M%S")
 
