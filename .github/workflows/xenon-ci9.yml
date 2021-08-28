@@ -53,11 +53,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: Images
-        path: /home/runner/work/orangefox/out/target/product/*/*.img
-
-    - name: Post build to Telegram
-      uses: appleboy/telegram-action@master
-      with:
-        to: ${{ secrets.CHAT_ID }}
-        token: ${{ secrets.BOT_ID }}
-        message: 🛠️CI| OrangeFox Recovery for Spinel is built! Recovery uploaded in github artifacts.
+        path: /home/runner/work/orangefox/out/target/product/*/*.img && *zip
