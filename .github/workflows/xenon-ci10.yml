@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: "Build Unitrix kernel"
+    name: "Kernel Building"
     runs-on: ubuntu-latest
     steps:
 
@@ -19,8 +19,7 @@ jobs:
     - name: "Set variables"
       id: vars
       run: |
-        echo "::set-output name=short_sha::$(git rev-parse HEAD | cut -b 1-8 -)"
-        echo "::set-output name=release_name::Dark-Ages-Último"
+        echo "::set-output name=release_name::Dark-Ages"
 
     - name: "Checkout zipper"
       uses: actions/checkout@v2
@@ -33,7 +32,7 @@ jobs:
       with:
         to: ${{ secrets.CHAT_ID }}
         token: ${{ secrets.BOT_API }}
-        message: Building ${{ steps.vars.outputs.release_name }} on ${{ steps.vars.outputs.short_sha }}. https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        message: 🛠️CI| ${{ steps.vars.outputs.release_name }} Kernel build started!
 
     - name: "Android kernel build"
       uses: lemniskett/android-kernel-actions@master
@@ -51,7 +50,7 @@ jobs:
       with:
         to: ${{ secrets.CHAT_ID }}
         token: ${{ secrets.BOT_ID }}
-        message: ${{ steps.vars.outputs.release_name }} on ${{ steps.vars.outputs.short_sha }} is built!, took ${{ steps.build.outputs.elapsed_time }} seconds.
+        message: ${{ steps.vars.outputs.release_name }} is built!, took ${{ steps.build.outputs.elapsed_time }} seconds.
         document: ${{ steps.build.outputs.outfile }}
         
     - name: "Alert failed build"
@@ -60,4 +59,4 @@ jobs:
       with:
         to: ${{ secrets.CHAT_ID }}
         token: ${{ secrets.BOT_API }}
-        message: Failed building ${{ steps.vars.outputs.release_name }} on ${{ steps.vars.outputs.short_sha }}, check action for more info.
+        message: Failed building!check action for more info.
