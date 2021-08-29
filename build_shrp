@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVICE=cactus
+DEVICE=ginkgo
 # Lets see machine specifications and environments
 df -h
 free -h
@@ -36,7 +36,7 @@ tg_send_file() {
 
 make_shrp(){
 	tg_post_msg "<b>🛠️CI|SHRP Build Started!</b>
-                     <b>Started on:</b> AWS
+                     <b>Started on:</b> AWS 8 core 16 gib
                      <b>Date:</b> $(date)" "$CHAT_ID"
 	BUILD_START=$(date +%s)
 	mka recoveryimage
