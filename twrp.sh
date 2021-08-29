@@ -13,12 +13,12 @@ green='\e[0;32m'
 
 
 # put device product/device name/device codename
-VENDOR="lenovo"
-DEVICE="Z6 Pro"
-CODENAME="zippo"
+VENDOR="realme"
+DEVICE="realme 6"
+CODENAME="RMX2001"
 
 # Put the url for the device tree on github and branch
-DEVICE_TREE="https://github.com/TeamWin/android_device_lenovo_zippo"
+DEVICE_TREE="https://github.com/TeamWin/android_device_realme_RMX2001"
 DEVICE_BRANCH="android-10"
 
 # Check https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni branches for that
