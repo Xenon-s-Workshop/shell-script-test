@@ -13,16 +13,16 @@ green='\e[0;32m'
 
 
 # put device product/device name/device codename
-VENDOR="xiaomi"
-DEVICE="null"
-CODENAME="cactus"
+VENDOR="lenovo"
+DEVICE="Z6 Pro"
+CODENAME="zippo"
 
 # Put the url for the device tree on github and branch
-DEVICE_TREE="https://github.com/TeamWin/android_device_xiaomi_cactus"
-DEVICE_BRANCH="android-9.0"
+DEVICE_TREE="https://github.com/TeamWin/android_device_lenovo_zippo"
+DEVICE_BRANCH="android-10"
 
 # Check https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni branches for that
-TWRP_VERSION="twrp-9.0"
+TWRP_VERSION="twrp-10.0"
 
 # Telgram env setup
 export BOT_MSG_URL="https://api.telegram.org/bot$BOT_API/sendMessage"
@@ -93,7 +93,7 @@ DATE=$(date +"%Y%m%d-%H%M%S")
 	fi
 
 	if [ -f "$IMG" ]; then
-		TWRP_IMGAGE="twrp-3.4.0-0_$CODENAME_$DATE.img"
+		TWRP_IMGAGE="twrp-3.5.0_$CODENAME_$DATE.img"
 		mkdir sender
 		mv "$IMG" sender/"$TWRP_IMGAGE"
 		cd sender
