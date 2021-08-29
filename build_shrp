@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVICE=beyondx
+DEVICE=gauguin
 # Lets see machine specifications and environments
 df -h
 free -h
