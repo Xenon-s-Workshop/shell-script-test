@@ -3,7 +3,6 @@ on:
   workflow_dispatch:
     inputs:
       pushtosf: true
-        description: 'set this to true if you wanna push to sf (all small)'
         required: true
 env:
   MANIFEST: "https://github.com/SHRP/platform_manifest_twrp_omni"
