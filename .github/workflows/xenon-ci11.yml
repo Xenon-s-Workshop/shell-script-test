@@ -2,11 +2,9 @@ name: SHRP-CI2
 
 on:
   workflow_dispatch:
-
     inputs:
       pushtosf: true
-        required: true
-  env:
+env:
   MANIFEST: "https://github.com/SHRP/platform_manifest_twrp_omni"
   # Recovery Manifest URL with -b branch
   DT_LINK: "https://github.com/SHRP-Devices/device_realme_RMX1801"
