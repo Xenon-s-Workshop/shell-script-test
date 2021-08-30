@@ -309,7 +309,6 @@ build_kernel() {
 	if [ "$PTTG" = 1 ]
  	then
             tg_post_msg "<b>🛠️CI|Redux Kernel Build Triggered</b>
-<b>Host: Bionic Focal
 <b>Host Core Count : </b><code>$PROCS</code>
 <b>Device: </b><code>$MODEL</code>
 <b>Codename: </b><code>$DEVICE</code>
