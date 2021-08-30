@@ -7,7 +7,7 @@ defaults:
     shell: bash
 inputs:
       pushtosf: true
-        required: true
+  required: true
 env:
   MANIFEST: "https://github.com/SHRP/platform_manifest_twrp_omni"
   # Recovery Manifest URL with -b branch
