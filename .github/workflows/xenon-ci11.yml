@@ -1,9 +1,12 @@
 name: SHRP CI
+
 on:
   workflow_dispatch:
+
     inputs:
       pushtosf: true
         required: true
+
 env:
   MANIFEST: "https://github.com/SHRP/platform_manifest_twrp_omni"
   # Recovery Manifest URL with -b branch
@@ -41,13 +44,13 @@ jobs:
               cd ${BuildPath}/out/target/product/${CODENAME}/
               ZIP=$(echo *stable*.zip)
               curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001296548298" \
+                  -F chat_id="-1001595569305" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
                   -F caption=" <i> 🛠️CI|SHRP Recovery </i> for <b> '$VENDOR' '$CODENAME' </b> is available | Build finished on <b> $(date) </b> | <i> #SHRP Recovery </i> "
               ZIP=$(echo *AddonRescue*.zip)
               curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001296548298" \
+                  -F chat_id="-1001595569305" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
                   -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$CODENAME' </b> | <i> #SHRP Recovery </i> "
