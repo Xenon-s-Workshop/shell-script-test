@@ -1,8 +1,10 @@
 name: SHRP-CI2
-
 on:
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash
     inputs:
       pushtosf: true
 env:
