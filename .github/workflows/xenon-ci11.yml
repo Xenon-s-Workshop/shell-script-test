@@ -24,7 +24,7 @@ env:
   # For qualcomm FDE devices put git clone https://github.com/omnirom/android_vendor_qcom_opensource_commonsys --depth=1 -b android-9.0 vendor/qcom/opensource/commonsys in EXTRA CMD
   # If you want to Execute any external Command Before Compilation Starts
   TZ: "Asia/Kolkata"
-  TOKEN: ${{ secrets.BOTTOKEN }}
+  TOKEN: ${{ secrets.BOT_API }}
 
 jobs:
   shrpCI:
