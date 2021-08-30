@@ -2,7 +2,7 @@ name: SHRP-CI2
 
 author: XenonTheInertG
 on:
-workflow_dispatch:
+   workflow_dispatch:
     inputs:
       pushtosf: true
 env:
