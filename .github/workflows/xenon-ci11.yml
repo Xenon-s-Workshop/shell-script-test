@@ -6,7 +6,7 @@ defaults:
   run:
     shell: bash
 inputs:
-      pushtosf: true
+ pushtosf: true
   required: true
 env:
   MANIFEST: "https://github.com/SHRP/platform_manifest_twrp_omni"
