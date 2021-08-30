@@ -1,4 +1,4 @@
-name: SHRP CI
+name: SHRP-CI2
 
 on:
   workflow_dispatch:
