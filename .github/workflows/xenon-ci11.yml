@@ -7,7 +7,6 @@ defaults:
     shell: bash
 inputs:
       pushtosf: true
-        description: set this to true if you wanna push to sf
         required: true
 env:
   MANIFEST: "https://github.com/SHRP/platform_manifest_twrp_omni"
