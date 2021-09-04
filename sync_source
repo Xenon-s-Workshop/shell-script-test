@@ -6,4 +6,4 @@ git config --global user.name XenonTheInertG
 git config --global user.email XenonTheInertG@outlook.com
 
 # Sync stuffs
-git clone https://github.com/nullxception/kernel_xiaomi_vayu --depth=1 --single-branch -b eleven
+git clone https://github.com/HemantSachdeva/kernel_xiaomi_laurel_sprout --depth=1 --single-branch -b elle kernel
