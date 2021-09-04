@@ -67,8 +67,8 @@ tg_post_msg() {
 }
 
 make_kernel(){
-	tg_post_msg "<b>🛠️CI|$KERNEL Kernel Build Started!</b>
-        <b>Device:</b> $DEVICE
+	tg_post_msg "<b>🛠️CI| $KERNEL Kernel Build Started!</b>
+ <b>Device:</b> $DEVICE
 	<b>Started on:</b> AWS 8 Core 32 Gib
 	<b>Date:</b> $(date)" "$CHAT_ID"
 	[ -e output/.config ] && {
