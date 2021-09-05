@@ -4,9 +4,7 @@ on:
 defaults:
   run:
     shell: bash
-inputs:
- pushtosf: true
-       required: true
+
 env:
   MANIFEST: "https://github.com/SHRP/platform_manifest_twrp_omni"
   # Recovery Manifest URL with -b branch
@@ -56,7 +54,6 @@ jobs:
                   -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$CODENAME' </b> | <i> #SHRP Recovery </i> "
 
        - name: PUSH to SF
-         if: ${{ github.event.inputs.pushtosf }} == 'true'
          run: |
               cd ${BuildPath}/out/target/product/${CODENAME}/
               sudo apt-get update -y && sudo apt-get install expect -y
