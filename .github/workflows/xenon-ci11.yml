@@ -1,7 +1,6 @@
 name: SHRP-CI2
 on:
   workflow_dispatch:
-
 defaults:
   run:
     shell: bash
@@ -30,7 +29,7 @@ env:
   TOKEN: ${{ secrets.BOT_API }}
 
 jobs:
-  shrpCI:
+  build:
     runs-on: ubuntu-20.04
 
     steps:
