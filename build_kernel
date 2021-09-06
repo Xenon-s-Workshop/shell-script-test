@@ -19,7 +19,7 @@ TC_CLANG=$PWD/../clang
 TC_GCC_ARM64=$PWD/../gcc
 TC_GCC_ARM32=$PWD/../gcc-arm
 DEVICE=vayu
-KERNEL=Linux_Chaldeans
+KERNEL=Stealth
 
 # picked from this commit https://github.com/Jebaitedneko/android_kernel_xiaomi_olive/commit/823db672576da0c882f953f2938b233785b29add#diff-4d2a8eefdf2a9783512a35da4dc7676a66404b6f3826a8af9aad038722da6823 (credit:  Jebaitedneko @ github)
 YYLL1=$PWD/scripts/dtc/dtc-lexer.lex.c_shipped
