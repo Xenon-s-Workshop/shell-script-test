@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://cloud.s0-samfw.cf/afc4c1d5f707ba19e826ed9fd1306986
+  ROM_URL: https://ghostmirror.hitesh920.workers.dev/0://Samfw.com_SM-A125F_INS_A125FXXU1BUE4_fac.zip
 
 jobs:
   build:
