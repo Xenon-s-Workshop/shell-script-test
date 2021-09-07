@@ -33,8 +33,8 @@ jobs:
          working-directory: Xenon-CI
          run: |
               echo "${{ secrets.GIT_TOKEN }}" > .github_token
-              echo "${{ secrets.GIT_ORG_NAME }}" > .github_orgname
-              echo "${{ secrets.BOT_TOKEN }}" > .tg_token
+              echo "${{ secrets.ORG }}" > .github_orgname
+              echo "${{ secrets.BOT_API }}" > .tg_token
               echo "${{ secrets.CHAT_ID }}" > .tg_chat
 
        - name: Running tools
