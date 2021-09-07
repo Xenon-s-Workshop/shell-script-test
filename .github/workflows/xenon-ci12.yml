@@ -1,0 +1,43 @@
+name: Dump-CI
+ 
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  ROM_URL: https://ghostmirror.hitesh920.workers.dev/0://Samfw.com_SM-A125F_INS_A125FXXU1BUE4_fac.zip
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkouts
+         uses: actions/checkout@v2
+
+       - name: Clone Tools
+         run: |
+              git clone https://github.com/XenonTheInertG/Xenon-CI
+
+       - name: Setup Dumpyara environment
+         working-directory: Xenon-CI
+         run: |
+              sudo bash setup.sh
+              git config --global user.name "XenonTheInertG"
+              git config --global user.email "XenonTheInertG@outlook.com"
+
+       - name: Setup config envs
+         working-directory: Xenon-CI
+         run: |
+              echo "${{ secrets.GIT_TOKEN }}" > .github_token
+              echo "${{ secrets.GIT_ORG_NAME }}" > .github_orgname
+              echo "${{ secrets.BOT_TOKEN }}" > .tg_token
+              echo "${{ secrets.CHAT_ID }}" > .tg_chat
+
+       - name: Running tools
+         working-directory: Xenon-CI
+         run: |
+              ./dump.sh "$ROM_URL"
