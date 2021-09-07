@@ -20,17 +20,17 @@ jobs:
 
        - name: Clone Tools
          run: |
-              git clone https://github.com/Xenon-s-Workshop/firmware_dumper
+              git clone https://github.com/Xenon-s-Workshop/Firmware-Dump dump
 
        - name: Setup Dumpyara environment
-         working-directory: firmware_dumper
+         working-directory: dump
          run: |
               sudo bash setup.sh
               git config --global user.name "XenonTheInertG"
               git config --global user.email "XenonTheInertG@outlook.com"
 
        - name: Setup config envs
-         working-directory: firmware_dumper
+         working-directory: dump
          run: |
               echo "${{ secrets.GIT_TOKEN }}" > .github_token
               echo "${{ secrets.ORG }}" > .github_orgname
@@ -38,6 +38,6 @@ jobs:
               echo "${{ secrets.CHAT_ID }}" > .tg_chat
 
        - name: Running tools
-         working-directory: firmware_dumper
+         working-directory: dump
          run: |
               ./dump.sh "$ROM_URL"
