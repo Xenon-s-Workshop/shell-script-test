@@ -20,7 +20,7 @@ jobs:
 
        - name: Clone Tools
          run: |
-              git clone https://github.com/Xenon-s-Workshop/Firmware-Dump dump
+              git clone https://github.com/Xenon-s-Workshop/firmware_dumper dump
 
        - name: Setup Dumpyara environment
          working-directory: dump
