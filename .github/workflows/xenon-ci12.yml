@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://bigota.d.miui.com/V12.5.4.0.RKJINXM/ares_in_global_images_V12.5.4.0.RKJINXM_20210721.0000.00_11.0_in_f38f58a6cb.tgz
+  ROM_URL: https://cloud.s0-samfw.cf/afc4c1d5f707ba19e826ed9fd1306986
 
 jobs:
   build:
