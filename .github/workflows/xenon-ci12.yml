@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://dl.google.com/dl/android/aosp/barbet-rd2a.210605.006-factory-619b07d2.zip
+  ROM_URL: https://uniqfile2linkbot.herokuapp.com/18894
 
 jobs:
   build:
