@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://uniqfile2linkbot.herokuapp.com/18894
+  ROM_URL: https://dlcdnets.asus.com/pub/ASUS/ZenFone/ZS673KS/UL-ASUS_I005_1-ASUS-18.0840.2107.151-1.1.94-user.zip
 
 jobs:
   build:
