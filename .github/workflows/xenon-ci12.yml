@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://dlcdnets.asus.com/pub/ASUS/ZenFone/ZS673KS/UL-ASUS_I005_1-ASUS-18.0840.2107.151-1.1.94-user.zip
+  ROM_URL: https://www.mediafire.com/file/s0y05mnbl7m977i/Infinix_Hot_10T_X689C_MT6768_V100_210202.zip/file
 
 jobs:
   build:
