@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://www.mediafire.com/file/s0y05mnbl7m977i/Infinix_Hot_10T_X689C_MT6768_V100_210202.zip/file
+  ROM_URL: http://download2388.mediafire.com/iagx1bmpc7xg/s0y05mnbl7m977i/Infinix_Hot_10T_X689C_MT6768_V100_210202.zip
 
 jobs:
   build:
