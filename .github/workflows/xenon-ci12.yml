@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://drive.google.com/u/0/uc?export=download&confirm=Bnt1&id=1DKbQZkn3Ab_gXSgx9XinDFeXDrXYPJdZ
+  ROM_URL: https://store8.gofile.io/download/a9d7df5d-c46b-4cd2-97cf-f54240893bdd/Infinix_Hot_10_X682C_MT6768_V299_201109_(by_firmwarefile.com).zip
 
 jobs:
   build:
