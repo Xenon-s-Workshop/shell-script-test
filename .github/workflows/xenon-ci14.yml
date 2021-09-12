@@ -1,0 +1,142 @@
+name: AIO-CI
+
+on:
+ workflow_dispatch:
+    
+env:
+  ROM_URL: https://otafsg1.h2os.com/patch/amazone2/GLO/OnePlus6Oxygen/OnePlus6Oxygen_22.J.49_GLO_049_2011161942/OnePlus6Oxygen_22.J.49_OTA_049_all_2011161942_9d1dafc7a.zip
+  ROM_NAME: OxygenOS-OP6
+  PRODUCT_IMAGE: false
+  OPPRODUCT_IMAGE: false
+  WHOLE_VENDOR: true
+  OP7: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+
+       - name: Initializing environments
+         run: |
+            sudo -E apt-get -qq update
+            sudo -E apt-get -qq install git openjdk-8-jdk wget
+            sudo apt-get update -y
+            sudo apt-get install -y simg2img 
+            sudo apt-get install zip gzip tar
+            sudo -E apt-get install expect
+            sudo pip3 install --upgrade setuptools
+            sudo pip3 install --upgrade pip
+            sudo apt update 2>/dev/null | grep packages
+        
+       - name: Initializing Payloads
+         if: env.WHOLE_VENDOR == 'true'
+         run: |
+              sudo aria2c https://tdrive.elytra8.workers.dev/payload_dumper_tool_by_ius.zip
+              sudo unzip *.zip
+              cd payload_dumper
+              sudo python3 -m pip install protobuf
+              
+       - name: Downloading FW
+         if: env.WHOLE_VENDOR == 'true'
+         run: |
+              cd payload_dumper
+              sudo aria2c $ROM_URL
+              
+       - name: Extracting Payload
+         if: env.WHOLE_VENDOR == 'true'
+         run: |
+              cd payload_dumper    
+              sudo unzip *.zip
+              sudo python3 payload_dumper.py payload.bin
+              ls
+              
+       - name: Copying final zipp
+         if: env.WHOLE_VENDOR == 'true'
+         run: |
+              mkdir lol
+              sudo cp -r payload_dumper/system.img lol
+              sudo cp -r payload_dumper/vendor.img lol
+   
+       - name: Copying product.img
+         if: env.PRODUCT_IMAGE == 'true'
+         run: sudo cp -r payload_dumper/product.img lol
+
+       - name: Extracting OP7 Folder
+         if: env.OP7 == 'true'
+         run: |
+              mkdir lol
+              cd lol
+              aria2c $ROM_URL
+              sudo mkdir lela
+              sudo mount -ro loop system.img lela/
+              sudo zip -r $ROM_NAME-OneplusFolder.zip lela/oneplus/build.prop lela/oneplus/feature_list
+              sudo zip -r $ROM_NAME-SystemOverlay.zip lela/product/overlay
+
+       - name: Copying opproduct.img
+         if: env.OPPRODUCT_IMAGE == 'true'
+         run: sudo cp -r payload_dumper/opproduct.img lol
+              
+       - name: Extracting Product Overlay
+         if: env.PRODUCT_IMAGE == 'true'
+         run: |
+              cd lol
+              sudo mkdir lel
+              sudo mount -ro loop product.img lel/
+              sudo zip -r $ROM_NAME-SystemOverlay.zip lel/overlay
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer gof $ROM_NAME-SystemOverlay.zip
+       
+       - name: Extracting System Overlay
+         if: env.PRODUCT_IMAGE == 'false'
+         run: |
+              cd lol
+              sudo mkdir lel
+              sudo mount -ro loop system.img lel/
+              sudo zip -r $ROM_NAME-SystemOverlay.zip lel/system/product/overlay
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer wet $ROM_NAME-SystemOverlay.zip
+              
+       - name: Extracting Vendor Overlay
+         run: |
+              cd lol
+              sudo mkdir lel1
+              sudo mount -ro loop vendor.img lel1/
+              sudo zip -r $ROM_NAME-VendorOverlay.zip lel1/overlay
+              ./transfer wet $ROM_NAME-VendorOverlay.zip
+              
+       - name: Copying hhole vendor
+         if: env.WHOLE_VENDOR == 'true' 
+         run: |
+              cd lol
+              sudo mkdir lel2
+              sudo mount -ro loop vendor.img lel2/
+              sudo zip -r $ROM_NAME-Vendor.zip lel2
+              ./transfer wet $ROM_NAME-Vendor.zip
+      
+       - name: Extracting OnePlus Folder
+         if: env.OPPRODUCT_IMAGE == 'true'
+         run: |
+              cd lol
+              sudo mkdir lel3
+              sudo mount -ro loop opproduct.img lel3/
+              sudo zip -r $ROM_NAME-OneplusFolder.zip lel3/build.prop lel3/feature_list
+              ./transfer gof $ROM_NAME-OneplusFolder.zip
+       
+       - name: Initializing telegram bot
+         env:
+              TOKEN: ${{ secrets.BOT_API }}
+
+         run: |
+              sudo install telegram /usr/bin
+              chmod +x initial.sh
+              ./initial.sh
+              
+       - name: Execute Shell Script
+         env:
+              TOKEN: ${{ secrets.BOT_API }}
+
+         run: |
+               chmod +x upload1.sh
+               ./upload1.sh
