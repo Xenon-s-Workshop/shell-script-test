@@ -1,0 +1,67 @@
+name: Elementary-CI
+
+on:
+  workflow_dispatch:
+
+env:
+  TZ: Asia/Kolkata
+  
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+       
+       - name: Clean Up
+         run: |
+           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
+
+       - name: Initializing environment
+         run: |
+            sudo -E apt-get -qq update
+            sudo -E apt-get -qq install git openjdk-8-jdk wget expect p7zip-full p7zip-rar
+       
+       - name: Clone my fork of Elementary Build system
+         run: git clone https://github.com/JamieHoSzeYui/os
+       
+       - name: Build elementary 
+         run: |
+              cd os
+              docker run --privileged -i -v /proc:/proc \
+              -v ${PWD}:/working_dir \
+              -w /working_dir \
+              debian:latest \
+              /bin/bash -s etc/terraform-daily-6.0-azure.conf < build.sh
+              cd builds/*/
+              sudo chmod -R 0777 .
+              sudo chmod 0777 *
+
+       - name: Release Builds
+         continue-on-error: true
+         run: |
+              cd os/builds/*/
+              expect -c " 
+              spawn sftp ${{ secrets.SFUSER }}@frs.sourceforge.net
+              expect \"yes/no\"
+              send \"yes\r\"
+              expect \"Password\"        
+              send \"${{ secrets.SFPASS }}\r\"
+              expect \"sftp> \"
+              send \"cd ${{ secrets.SFDIR }}\r\"
+              set timeout -1
+              send \"put *.iso\r\"
+              expect \"Uploading\"
+              expect \"100%\"
+              expect \"sftp>\"
+              send \"bye\r\"
+              interact"
+             
+       - uses: actions/upload-artifact@v2
+         continue-on-error: true
+         with:
+          name: Built ElementaryOS Image
+          path: os/builds/*/*.7z
+          
+          
