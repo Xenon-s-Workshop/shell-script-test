@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: http://download2146.mediafire.com/4jgs3bjuc3kg/c52k57rb2a6fax8/CPH2219export_11_A.16_2021042211370000_GsmMafia.Com.zip
+  ROM_URL: https://drive.google.com/u/0/uc?export=download&confirm=ldkX&id=1DKbQZkn3Ab_gXSgx9XinDFeXDrXYPJdZ
 
 jobs:
   build:
