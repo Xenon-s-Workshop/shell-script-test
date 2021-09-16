@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://drive.google.com/u/0/uc?export=download&confirm=ldkX&id=1DKbQZkn3Ab_gXSgx9XinDFeXDrXYPJdZ
+  ROM_URL: https://bigota.d.miui.com/V12.5.2.0.RKGMIXM/mojito_global_images_V12.5.2.0.RKGMIXM_20210731.0000.00_11.0_global_ce90f80766.tgz
 
 jobs:
   build:
