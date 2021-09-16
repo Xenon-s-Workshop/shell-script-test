@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://mde1.androidfilehost.com/dl/IL0-tDYgK2m_Q0yIMThRXA/1631353625/17248734326145727574/Infinix_Hot_10_X682C_MT6768_V299_201109_%28by_firmwarefile.com%29.zip
+  ROM_URL: https://asia-sysupwsdl.vivoglobal.com/upgrade/official/officialFiles/PD1934F_EX_A_6.10.3-update-full_1626236760.zip
 
 jobs:
   build:
