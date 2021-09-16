@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://asia-sysupwsdl.vivoglobal.com/upgrade/official/officialFiles/PD1934F_EX_A_6.10.3-update-full_1626236760.zip
+  ROM_URL: http://dl-res.flymeos.com/Firmware/Flyme/16xs/7.3.1.0/intl/20190727193914/748b6cff/update.zip
 
 jobs:
   build:
