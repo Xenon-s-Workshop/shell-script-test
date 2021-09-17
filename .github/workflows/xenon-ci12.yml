@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://bigota.d.miui.com/V12.5.2.0.RKGMIXM/mojito_global_images_V12.5.2.0.RKGMIXM_20210731.0000.00_11.0_global_ce90f80766.tgz
+  ROM_URL: https://altushost-swe.dl.sourceforge.net/project/projectsakura//miatoll/ProjectSakura-5.2-VANILLA-20210817-2342-miatoll-OFFICIAL.zip
 
 jobs:
   build:
