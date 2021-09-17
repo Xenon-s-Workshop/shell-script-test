@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://deac-ams.dl.sourceforge.net/project/projectsakura//RMX2001/ProjectSakura-5.2-GAPPS-Core-20210815-1331-RMX2001-OFFICIAL.zip
+  ROM_URL: http://download1322.mediafire.com/a05mauvgfijg/1du2xk5pgfq02mc/Vivo_Y75_PD1718_A_1.10.6_OTA.zip
 
 jobs:
   build:
