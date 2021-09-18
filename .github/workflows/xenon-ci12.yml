@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: http://download1322.mediafire.com/a05mauvgfijg/1du2xk5pgfq02mc/Vivo_Y75_PD1718_A_1.10.6_OTA.zip
+  ROM_URL: https://bigota.d.miui.com/V12.5.1.0.QCDCNXM/miui_DANDELION_V12.5.1.0.QCDCNXM_bc97ff5733_10.0.zip
 
 jobs:
   build:
