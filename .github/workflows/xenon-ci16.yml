@@ -3,9 +3,13 @@ name: SGSI_Build
 on:
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -78,9 +82,10 @@ jobs:
 
       - name: Upload SGSI to GH-Release
         uses: ncipollo/release-action@v1.8.6
-        with:
-         artifacts: ${{ github.workspace }}/SGSI-build-tool/upload/*
-         name: "${{ steps.config.outputs.os_type }}"${{ steps.config.outputs.build_type }}"-Android"${{ steps.config.outputs.version }}"-unpack
-         tag: "${{ steps.config.outputs.os_type }}"${{ steps.config.outputs.build_type }}"-"${{ steps.config.outputs.version }}"-${{ github.run_number }}
-         bodyFile: "${{ github.workspace}}/SGSI-build-tool/SGSI/build_info.txt"
-         token: ${{ secrets.GITHUB_TOKEN }}
+         with:
+           artifacts: ${{ github.workspace }}/SGSI-build-tool/upload/*
+           name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
+           tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
+           bodyFile: "${{ github.workspace }}/SGSI-build-tool/SGSI/build_info.txt"
+           token: ${{ secrets.GITHUB_TOKEN }}
+
