@@ -65,7 +65,7 @@ jobs:
         if: "${{ steps.config.outputs.build_type == 'a-only' }}"
         run: |
             sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh --a-only "${{ steps.config.outputs.os_type }}" "${{ steps.config.outputs.zip_name }}" --fix-bug     
-
+      
       - name: Repack Output File
         run: |            
              cd $GITHUB_WORKSPACE/SGSI-build-tool
@@ -81,7 +81,7 @@ jobs:
              ls "upload"
 
       - name: Upload SGSI to GH-Release
-        uses: ncipollo/release-action@v1.8.6
+        uses: ncipollo/release-action@v1
         with:
           name: "${{ steps.config.outputs.os_type }}""${{ steps.config.outputs.build_type }}"-Android"${{ steps.config.outputs.version }}"-unpack
           artifacts: ${{ github.workspace }}/SGSI-build-tool/upload/*
