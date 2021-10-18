@@ -78,8 +78,7 @@ jobs:
              else
                  mv "${{ steps.config.outputs.repack_name }}" upload/"${{ steps.config.outputs.repack_name }}"
              fi
-             ls "upload"
-
+              ls "upload"
       - name: Upload GSI to GH-Release
         uses: ncipollo/release-action@v1
         with: 
