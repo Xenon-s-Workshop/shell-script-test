@@ -35,7 +35,7 @@ jobs:
               mkdir work
               cd work
               wget $RECOVERY
-              python3 -m twrpdtgen -o OUTPUT --git
+              python3 -m twrpdtgen -h -o OUTPUT --git
        
        - name: Upload tree
          run: |
