@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://mgb1.androidfilehost.com/dl/yF8EkxlKubBI53Brcinq3A/1637760417/2188818919693773244/Walton_Primo_R6_Max_S06_08072019_SPD_%28by_firmwarefile.com%29.zip
+  ROM_URL: http://download843.mediafire.com/61p8x80u5bmg/zcwgylecbao6ssd/Walton_Primo_R6_Max_S06_08072019_SPD.zip
 
 jobs:
   build:
