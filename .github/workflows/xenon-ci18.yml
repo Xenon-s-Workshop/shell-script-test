@@ -3,7 +3,7 @@ author: XenonTheInertG
 on: [push]
 
 env:
-  RECOVERY: (put recovery/boot image dl link here)
+  RECOVERY: https://cdn.filesend.jp/private/6y2KToHwu-6Xa8aNPMlo4hwd-NdLutea69XNJZS_STNGwEh8DqvrRrl8FaTkX7wW/recovery.img
   TZ: Asia
 jobs:
   build:
