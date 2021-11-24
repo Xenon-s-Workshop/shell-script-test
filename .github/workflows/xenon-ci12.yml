@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 env:
-  ROM_URL: https://dl.google.com/dl/android/aosp/oriole-sd1a.210817.015.a4-factory-074b7f51.zip
+  ROM_URL: https://mva1.androidfilehost.com/dl/DxdGIiG3LQBlw1WA5DSNoA/1637843240/2188818919693773244/Walton_Primo_R6_Max_S06_08072019_SPD_%28by_firmwarefile.com%29.zip
 
 jobs:
   build:
