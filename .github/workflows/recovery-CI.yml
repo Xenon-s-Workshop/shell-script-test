@@ -27,4 +27,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: Images
-        path: ${Buildpath}/out/target/product/*/*zip
+        path: ${Buildpath}/work/out/target/product/*/*zip
