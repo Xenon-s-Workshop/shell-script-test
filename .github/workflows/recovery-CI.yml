@@ -27,4 +27,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: Images
-        path: /home/runner/work/orangefox/out/target/product/*/*.img && *zip
+        path: /home/runner/work/shrp/out/target/product/*/*.img && *zip
