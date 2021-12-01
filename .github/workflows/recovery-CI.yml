@@ -1,4 +1,4 @@
-name: SHRP-CI2
+name: Recovery-CI2
 on:
   workflow_dispatch:
 defaults:
@@ -21,8 +21,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - name: Cleaning Up Runner
-      uses: rokibhasansagar/slimhub_actions@main
     - name: Build Image
       uses: XenonTheInertG/Android-Recovery-action@V1.2
     - name: Upload recovery image
