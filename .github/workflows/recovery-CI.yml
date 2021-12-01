@@ -22,7 +22,7 @@ jobs:
 
     steps:
     - name: Build Image
-      uses: XenonTheInertG/Android-Recovery-action@main
+      uses: XenonTheInertG/Android-Recovery-Action@main
     - name: Upload recovery image
       uses: actions/upload-artifact@master
       with:
