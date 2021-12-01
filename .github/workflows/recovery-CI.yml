@@ -1,28 +1,31 @@
-name: Recovery-CI
-
+name: SHRP-CI2
 on:
   workflow_dispatch:
+defaults:
+  run:
+    shell: bash
+
+env:
+  MANIFEST: "https://github.com/SHRP/platform_manifest_twrp_omni"
+  DT_LINK: "https://github.com/SHRP-Devices/device_realme_RMX1801"
+  VENDOR: "realme"
+  CODENAME: "RMX1801"
+  KERNEL_LINK: ""
+  TARGET: "recoveryimage"
+  FLAVOR: "eng"
+  EXTRA_CMD: ""
+  TZ: "Asia/Dhaka"
 
 jobs:
-
   build:
-    runs-on: ubuntu-latest
-    env:
-      MANIFEST: "Recovery Manifest URL with -b branch" or "orangefox" for orangefox android v10
-      DT_LINK: "Your Device Tree Link"
-      VENDOR: "Your Device's Vendor name as in used inside DT. Example: xiaomi, samsung, asus, etc."
-      CODENAME: "Your Device's Codename as in used inside DT. Example: nikel, phoenix, ginkgo, etc."
-      KERNEL_LINK: "Kernel repo link with optional -b branch. If not filled it would be detected as prebuilt"
-      TARGET: "Set as recoveryimage or bootimage if no recovery partition avaiable"
-      FLAVOR: "eng or userdebug"
-      EXTRA_CMD: "if you want to Execute any external Command Before building process starts"
-      TZ: "Dhaka/Bangladesh" # Set Time-Zone According To Your Region
+    runs-on: ubuntu-20.04
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
+    - name: Cleaning Up Runner
+      uses: rokibhasansagar/slimhub_actions@main
     - name: Build Image
       uses: XenonTheInertG/Android-Recovery-action@V1.2
-    - name : Upload recovery image
+    - name: Upload recovery image
       uses: actions/upload-artifact@master
       with:
         name: Images
