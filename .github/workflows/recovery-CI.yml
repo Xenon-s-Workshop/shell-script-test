@@ -7,7 +7,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-
     env:
       MANIFEST: "Recovery Manifest URL with -b branch" or "orangefox" for orangefox android v10
       DT_LINK: "Your Device Tree Link"
@@ -18,15 +17,11 @@ jobs:
       FLAVOR: "eng or userdebug"
       EXTRA_CMD: "if you want to Execute any external Command Before building process starts"
       TZ: "Dhaka/Bangladesh" # Set Time-Zone According To Your Region
-
-
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    
     - name: Build Image
       uses: XenonTheInertG/Android-Recovery-action@V1.2
-
     - name : Upload recovery image
       uses: actions/upload-artifact@master
       with:
