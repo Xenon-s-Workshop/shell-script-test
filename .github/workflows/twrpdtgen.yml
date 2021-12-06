@@ -48,13 +48,8 @@ jobs:
       run: |
         zip -r DeviceTree.zip ./dt
 
-    - name: Upload to Release
-      uses: softprops/action-gh-release@v1
+    - name: Upload recovery image
+      uses: actions/upload-artifact@master
       with:
-        files: |
-          ./DeviceTree.zip
-        name: TWRP_Device_Tree-${{ github.run_id }}
-        tag_name: ${{ github.run_id }}
-        body: DeviceTree for twrp
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        name: DT
+        path: ./DeviceTree.zip
