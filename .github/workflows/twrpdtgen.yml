@@ -1,4 +1,4 @@
-name: Make TWRP Device
+name: twrpdtgen
 
 on:
   workflow_dispatch:
