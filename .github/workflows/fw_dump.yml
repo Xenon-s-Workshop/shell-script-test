@@ -2,13 +2,13 @@ name: Dump-CI
  
 on:
   workflow_dispatch:
-
+    inputs:
+      FW_URL:
+        description: 'FW URL'
+        required: true
 defaults:
   run:
     shell: bash
-
-env:
-  ROM_URL: https://dl.google.com/dl/android/aosp/raven-sd1a.210817.015.a4-factory-bd6cb030.zip
 
 jobs:
   build:
@@ -40,4 +40,4 @@ jobs:
        - name: Running tools
          working-directory: dump
          run: |
-              ./dump.sh "$ROM_URL"
+              ./dump.sh ${{ github.event.inputs.FW_URL }}
