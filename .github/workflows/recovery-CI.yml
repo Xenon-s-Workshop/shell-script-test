@@ -23,8 +23,3 @@ jobs:
     steps:
     - name: Build Image
       uses: XenonTheInertG/android-recovery-action@main
-    - name: Upload recovery image
-      uses: actions/upload-artifact@master
-      with:
-        name: Images
-        path: ${BuildPath}/out/target/product/${CODENAME}/*{.img,.zip}
