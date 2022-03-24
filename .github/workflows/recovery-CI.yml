@@ -21,5 +21,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+    - uses: rokibhasansagar/slimhub_actions@main
     - name: Build Image
       uses: XenonTheInertG/android-recovery-action@main
